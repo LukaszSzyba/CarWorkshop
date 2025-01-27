@@ -1,0 +1,19 @@
+﻿@model List<About>
+
+@{
+}
+<h1>TEST</h1>
+<p>Title | Description | Tags</p>
+@foreach (var about in Model)
+{
+    <p>@about.Title | @about.Description | Tags:
+        
+        @for (int i = 0; i < @about.Tags.Length; i++)
+        {
+            <ul>
+                <li>@about.Tags[i];</li>
+            </ul>
+        }
+        
+    </p>
+}
