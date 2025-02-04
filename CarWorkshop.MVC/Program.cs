@@ -1,7 +1,19 @@
+using CarWorkshop.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using CarWorkshop.Infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//var DBConnect = builder.Configuration.GetConnectionString("CarWorkshopORA");
+
+//builder.Services.AddDbContext<CarWorkshopDbContext>(options => options.UseOracle(DBConnect));
+builder.Services.AddInfrastructure(builder.Configuration);
+
+
+
 
 var app = builder.Build();
 
