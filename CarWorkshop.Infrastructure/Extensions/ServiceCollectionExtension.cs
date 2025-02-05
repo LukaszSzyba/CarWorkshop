@@ -7,6 +7,9 @@ using CarWorkshop.Infrastructure.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using CarWorkshop.Infrastructure.Seeders;
+using CarWorkshop.Domain.Intefaces;
+using CarWorkshop.Infrastructure.Repositories;
 
 namespace CarWorkshop.Infrastructure.Extensions
 {
@@ -17,6 +20,10 @@ namespace CarWorkshop.Infrastructure.Extensions
             var DBConnect = configuration.GetConnectionString("CarWorkshopORA");
 
             services.AddDbContext<CarWorkshopDbContext>(options => options.UseOracle(DBConnect));
+
+            services.AddScoped<CarWorkshopSeeder>();
+
+            services.AddScoped<ICarWorkshopRepository, CarWorkshopRepository>();
         }
     }
 }
